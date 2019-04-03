@@ -6,6 +6,7 @@
 
 int WakeUp_Status = 0, Spirit_Status = 100;
 int cbangun=0, cspirit=0, flag=0;
+int fbangun=0, fspirit=0;
 int finish = 0;
 char pilih[20];
 pthread_t tid[2];
@@ -30,10 +31,12 @@ void *bangun()
     {
         if(cspirit >= 3)
         {
+            cspirit -= 3;
             printf("Fitur Agmal Ayo Bangun disabled 10 s\n");
+            fbangun = 1;
             sleep(10);
             printf("Fitur Agmal Ayo Bangun enabled\n");
-            cspirit = 0;
+            fbangun = 0;
         }
         else if(flag == 2)
         {
@@ -52,10 +55,12 @@ void *tidur()
     {
         if(cbangun >= 3)
         {
+            cbangun -= 3;
             printf("Fitur Iraj Ayo Tidur disabled 10 s\n");
+            fspirit = 1;
             sleep(10);
             printf("Fitur Iraj Ayo Tidur enabled\n");
-            cbangun = 0;
+            fspirit = 0;
         }
         else if(flag == 3)
         {
@@ -84,7 +89,9 @@ int main()
         }
         else if(strcmp(pilih,"Agmal Ayo Bangun")==0)
         {
-            if(cspirit < 3)
+            if(fbangun == 1)
+                printf("Fitur Agmal Ayo Bangun masih disabled!!\n");
+            else if(cspirit < 3)
             {
                 cbangun++;
                 flag = 2;
@@ -92,7 +99,9 @@ int main()
         }
         else if(strcmp(pilih,"Iraj Ayo Tidur")==0)
         {
-            if(cbangun < 3)
+            if(fspirit == 1)
+                printf("Fitur Iraj Ayo Tidur masih disabled!!\n");
+            else if(cbangun < 3)
             {
                 cspirit++;
                 flag = 3;
