@@ -8,6 +8,10 @@
 
 ### Langkah-Langkah
 
+1. Buat tiga thread, yaitu status, bangun, tidur.
+2. Status berisi status dari variabel WakeUp_Status dan Spirit_Status
+3. 
+
 ### Implementasi
 
 ## SOAL 2
