@@ -38,4 +38,6 @@
 
 ### Langkah-Langkah
 
+1. 
+
 ### Implementasi
