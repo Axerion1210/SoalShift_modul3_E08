@@ -8,10 +8,6 @@
 
 ### Langkah-Langkah
 
-1. Buat tiga thread, yaitu status, bangun, tidur.
-2. Status berisi status dari variabel WakeUp_Status dan Spirit_Status
-3. 
-
 ### Implementasi
 
 ## SOAL 2
@@ -23,6 +19,12 @@
 ## SOAL 3
 
 ### Langkah-Langkah
+
+1. Buat tiga thread, yaitu status, bangun, tidur.
+2. Thread status untuk menjalankan fitur All Status yang berisi status dari variabel WakeUp_Status dan Spirit_Status.
+3. Thread bangun untuk menjalankan fitur Agmal Ayo bangun.
+4. Thread tidur untuk menjalankan fitur Iraj Ayo Tidur.
+5. Membuat input untuk menjalankan salah satu fitur.
 
 ### Implementasi
 
