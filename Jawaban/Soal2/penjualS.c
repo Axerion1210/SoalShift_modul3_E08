@@ -44,7 +44,7 @@ void* terima(void *arg)
                 //printf("%s\n",buffer );
                 
                 *stock=*stock+1;
-                printf("Masuk bos\n, stock: %d", *stock);
+                //printf("Masuk bos\n, stock: %d", *stock);
                 //send(new_socket , hello , strlen(hello) , 0 );
             }
             else if(strcmp(buffer,keluar)==0){

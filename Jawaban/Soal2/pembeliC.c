@@ -54,27 +54,6 @@ void* kirim(void *arg)
 	return NULL;
 }
 
-void* terima(void *arg)
-{
-	unsigned long i=0;
-	pthread_t id=pthread_self();
-	if(pthread_equal(id,tid[1])) //thread untuk menjalankan counter
-	{
-		int flag = 1;
-        while (flag){
-            valread = read( sock , buffer, 1024);
-            if(valread!=0){
-                system("clear");
-                printf("%s\n",buffer);
-                printf("1. Tambah Stock.\n-1. Quit\nChoice: ");    
-                fflush(stdout);
-            }
-            memset(buffer, 0, 1024*sizeof(buffer[0])); 
-        }
-	}
-	return NULL;
-}
-
 
 int main(int argc, char const *argv[]) {
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
@@ -96,13 +75,7 @@ int main(int argc, char const *argv[]) {
         printf("\nConnection Failed \n");
         return -1;
     }
-
-    
-
     pthread_create(&(tid[0]),NULL,&kirim,NULL);
-    //pthread_create(&(tid[1]),NULL,&terima,NULL);
-    
     pthread_join(tid[0],NULL);
-    //pthread_join(tid[1],NULL);
     return 0;
 }
