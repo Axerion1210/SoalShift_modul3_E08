@@ -869,6 +869,8 @@ Choices
 
 Untuk program game:
 
+- Deklarasi variabel global dan library yang digunakan
+
 - 
 
 Untuk program penjual:
@@ -983,5 +985,27 @@ void *shareShop()
 
     while(1)
         foodstock = value[0];
+}
+```
+
+- Fungsi main untuk membuat thread, dan menjalankan program utamanya
+
+```c
+int main()
+{
+    pthread_create(&(tid[0]),NULL,clearScreen,NULL);
+    pthread_create(&(tid[1]),NULL,shop,NULL);
+    pthread_create(&(tid[2]),NULL,waitInput,NULL);
+    pthread_create(&(tid[3]),NULL,shareShop,NULL);
+
+    system("clear");
+    clearstatus = 0;
+
+    pthread_join(tid[0],NULL);
+    pthread_join(tid[1],NULL);
+    pthread_join(tid[2],NULL);
+    pthread_join(tid[3],NULL);
+
+    exit(0);
 }
 ```
