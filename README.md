@@ -847,10 +847,22 @@ Choices
 
 1. Untuk program game
     
-    1.
+    1. Membuat thread clearScreen untuk refresh tampilan per detik.
+    2. Membuat fungsi getAct untuk mendapatkan inputan berupa keypress.
+    3. Membuat thread waitInput untuk menunggu inputan keypress dari user dan mengerjakan perintah jika key tertentu ditekan.
+    4. Membuat thread hungry, untuk mengurangi Hunger dari monster sebanyak 5 tiap 10 detik.
+    5. Membuat thread dirty, untuk mengurangi Hygiene dari monster sebanyak 10 tiap 30 detik.
+    6. Membuat thread regen, untuk menambah Health dari monster sebanyak 5 tiap 10 detik.
+    7. Membuat thread bathready, untuk membuat cooldown dari Bath yang siap dalam 20 detik.
+    8. Membuat thread modes, yang menampilkan mode apa yang sekarang sedang berjalan (StandBy, Battle atau Shop)
+    9. Membuat thread shareShop untuk share memory variabel foodstock.
     
 2. Untuk program penjual
 
-    1.
+    1. Membuat thread clearScreen untuk refresh tampilan per detik.
+    2. Membuat fungsi getAct untuk mendapatkan inputan berupa keypress.
+    3. Membuat thread waitInput untuk menunggu inputan keypress dari user dan mengerjakan perintah jika key tertentu ditekan.
+    4. Membuat thread shop untuk tampilan Shop di penjual.
+    5. Membuat thread shareShop untuk share memory variabel foodstock.
 
 ### Implementasi
