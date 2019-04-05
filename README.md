@@ -1100,7 +1100,7 @@ void *dirty()
 }
 ```
 
-- Thread regen
+- Thread regen, untuk menambah health sebanyak 5 setiap 10 detik.
 
 ```c
 oid *regen()
@@ -1122,7 +1122,7 @@ oid *regen()
 }
 ```
 
-- Thread bathready
+- Thread bathready, untuk cooldown variabel bath agar bisa dipakai kembali.
 
 ```c
 void *bathready()
@@ -1138,7 +1138,7 @@ void *bathready()
 }
 ```
 
-- Thread modes
+- Thread modes, untuk menampilkan user berada di mode Standby, Battle, atau Shop.
 
 ```c
 void *modes()
