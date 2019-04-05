@@ -866,3 +866,122 @@ Choices
     5. Membuat thread shareShop untuk share memory variabel foodstock.
 
 ### Implementasi
+
+Untuk program game:
+
+- 
+
+Untuk program penjual:
+
+- Deklarasi variabel global dan library yang digunakan
+
+```c
+#include<stdio.h>
+#include<string.h>
+#include<pthread.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#include<termios.h>
+
+int clearstatus = 0;
+int act = 0, foodstock, restock = 0;
+pthread_t tid[3];
+key_t key = 100;
+int *value;
+```
+
+- Thread clearScreen, untuk refresh tampilan tiap detik
+
+```c
+void *clearScreen()
+{
+    while(1)
+    {
+        if(clearstatus)
+        {
+            sleep(1);
+            system("clear");
+            clearstatus = 0;
+        }
+    }
+}
+```
+
+- Fungsi getAct, untuk mengambil inputan dari user berupa keypress.
+
+```c
+int getAct()
+{
+    int ch;
+    struct termios oldt, newt;
+    
+    tcgetattr ( STDIN_FILENO, &oldt );
+    newt = oldt;
+    newt.c_lflag &= ~( ICANON | ECHO );
+    tcsetattr ( STDIN_FILENO, TCSANOW, &newt );
+    ch = getchar();
+    tcsetattr ( STDIN_FILENO, TCSANOW, &oldt );
+    
+    return ch;
+}
+```
+
+- Thread waitInput, untuk menjalankan perintah tertentu sesuai dengan keypress yang dimasukkan oleh user.
+
+```c
+int getAct()
+{
+    int ch;
+    struct termios oldt, newt;
+    
+    tcgetattr ( STDIN_FILENO, &oldt );
+    newt = oldt;
+    newt.c_lflag &= ~( ICANON | ECHO );
+    tcsetattr ( STDIN_FILENO, TCSANOW, &newt );
+    ch = getchar();
+    tcsetattr ( STDIN_FILENO, TCSANOW, &oldt );
+    
+    return ch;
+}
+```
+
+- Thread shop, untuk menampilkan tampilan Shop untuk penjual
+
+```c
+void *shop()
+{
+    while(1)
+    {
+        if(!clearstatus)
+        {
+            printf("Shop\n");
+            printf("Food stock : %d\n",foodstock);
+            if(!restock)
+            {
+                printf("\nChoices\n");
+                printf("1. Restock\n2. Exit\n");
+            }
+            else
+            {
+                printf("\nFood is restocked!\n");
+            }
+            clearstatus = 1;
+        }
+    }
+}
+```
+
+- Thread shareShop untuk mengshare value foodstock ke program game dan sebaliknya. 
+
+```c
+void *shareShop()
+{
+    int shmid1 = shmget(key, sizeof(int), IPC_CREAT | 0666);
+    value = shmat(shmid1, NULL, 0);
+
+    while(1)
+        foodstock = value[0];
+}
+```
