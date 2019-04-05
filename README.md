@@ -845,6 +845,12 @@ Choices
 
 ### Langkah-Langkah
 
-1. 
+1. Untuk program game
+    
+    1.
+    
+2. Untuk program penjual
+
+    1.
 
 ### Implementasi
