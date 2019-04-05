@@ -579,6 +579,66 @@ int main()
 }
 ```
 
+Terdapat kondisi jika fitur "Iraj Ayo Tidur" dijalankan tiga kali, maka akan disable fitur "Agmal Ayo bangun" selama 10 detik.
+- Di dalam thread bangun:
+
+```c
+        if(cspirit >= 3)
+        {
+            cspirit -= 3;
+            printf("Fitur Agmal Ayo Bangun disabled 10 s\n");
+            fbangun = 1;
+            sleep(10);
+            printf("Fitur Agmal Ayo Bangun enabled\n");
+            fbangun = 0;
+        }
+```
+
+- Di dalam fungsi main:
+
+```c
+        else if(strcmp(pilih,"Agmal Ayo Bangun")==0)
+        {
+            if(fbangun == 1)
+                printf("Fitur Agmal Ayo Bangun masih disabled!!\n");
+            else if(cspirit < 3)
+            {
+                cbangun++;
+                flag = 2;
+            }
+        }
+```
+
+Terdapat kondisi jika fitur "Agmal Ayo Bangun" dijalankan tiga kali, maka akan disable fitur "Iraj Ayo Tidur" selama 10 detik.
+- Di dalam thread tidur:
+
+```c
+        if(cbangun >= 3)
+        {
+            cbangun -= 3;
+            printf("Fitur Iraj Ayo Tidur disabled 10 s\n");
+            fspirit = 1;
+            sleep(10);
+            printf("Fitur Iraj Ayo Tidur enabled\n");
+            fspirit = 0;
+        }
+```
+
+- Di dalam fungsi main:
+
+```c
+        else if(strcmp(pilih,"Iraj Ayo Tidur")==0)
+        {
+            if(fspirit == 1)
+                printf("Fitur Iraj Ayo Tidur masih disabled!!\n");
+            else if(cbangun < 3)
+            {
+                cspirit++;
+                flag = 3;
+            }
+        }
+```
+
 ## SOAL 4
 
 Buatlah sebuah program C dimana dapat menyimpan list proses yang sedang berjalan (ps -aux) maksimal 10 list proses. Dimana awalnya list proses disimpan dalam di 2 file ekstensi .txt yaitu  SimpanProses1.txt di direktori /home/Document/FolderProses1 dan SimpanProses2.txt di direktori /home/Document/FolderProses2 , setelah itu masing2 file di  kompres zip dengan format nama file KompresProses1.zip dan KompresProses2.zip dan file SimpanProses1.txt dan SimpanProses2.txt akan otomatis terhapus, setelah itu program akan menunggu selama 15 detik lalu program akan mengekstrak kembali file KompresProses1.zip dan KompresProses2.zip 
