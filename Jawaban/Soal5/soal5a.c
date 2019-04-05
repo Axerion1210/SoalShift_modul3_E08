@@ -17,7 +17,7 @@ int act = 0, menus = 1;
 char nama[20];
 key_t key = 100;
 int *value;
-int *sigbuy, *sigstock;
+
 
 void *clearScreen()
 {
