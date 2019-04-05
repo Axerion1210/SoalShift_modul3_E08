@@ -928,7 +928,7 @@ int getAct()
 }
 ```
 
-- Thread waitInput, untuk menjalankan perintah tertentu sesuai dengan keypress yang dimasukkan oleh user.
+- Thread waitInput, untuk menjalankan perintah tertentu sesuai dengan keypress yang dimasukkan oleh user. Jika keypress 1 di Standby mode maka akan menambah hunger dan mengurangi food. Keypress 2 di Standby mode akan menambah hygiene dan cooldown bath diubah menjadi 20 detik. Keypress 3 di Standby mode akan menuju ke Battle mode. Keypress 4 di Standby mode akan menuju ke Shop mode. Keypress 5 di Standby mode akan keluar dari game. Keypress 1 di Battle mode, monster akan menyerang lawan dan sebaliknya. Keypress 2 di Battle mode akan kembali ke Standby mode. Keypress 1 di Shop mode akan menambah food dan mengurangi foodstock. Dan keypress 2 di Shop mode akan kembali ke Standby Mode.
 
 ```c
 void *waitInput()
@@ -1046,7 +1046,7 @@ void *waitInput()
 }
 ```
 
-- Thread hungry
+- Thread hungry untuk mengurangi variabel hunger sebanyak 5 setiap 10 detik
 
 ```c
 void *hungry()
@@ -1073,7 +1073,7 @@ void *hungry()
 }
 ```
 
-- Thread dirty
+- Thread dirty, untuk mengurangi variabel hygiene sebanyak 10 setiap 30 detik
 
 ```c
 void *dirty()
