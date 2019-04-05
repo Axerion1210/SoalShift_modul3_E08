@@ -1,7 +1,6 @@
 # SoalShift_modul3_E08
 
 #### Bagas Yanuar Sudrajad - 05111740000074 
-
 #### Octavianus Giovanni Yaunatan - 05111740000113
 
 ## SOAL 1
@@ -33,8 +32,6 @@ Contoh:
   int pekerja;
   int antrian = 1;
   ```
-
-  
 
 - Catat jumlah masalah (=jumlah pekerja/thread yang dibutuhkan). Convert inputan yang disimpan dalam bentuk *string* ke *integer*. Urutkan `masalah` .
 
@@ -417,19 +414,30 @@ Agmal dan Iraj merupakan 2 sahabat yang sedang kuliah dan hidup satu kostan, say
     - Iraj memiliki Spirit_Status, di awal program memiliki status 100
     - Terdapat 3 Fitur utama
         - All Status, yaitu menampilkan status kedua sahabat
+          <br>Ex:
+          <br>Agmal WakeUp_Status = 75 
+          <br>Iraj Spirit_Status = 30
+        - “Agmal Ayo Bangun” menambah WakeUp_Status Agmal sebesar 15 point
+        - “Iraj Ayo Tidur” mengurangi Spirit_Status Iraj sebanyak 20 point
     - Terdapat Kasus yang unik dimana:
+        - Jika Fitur “Agmal Ayo Bangun” dijalankan sebanyak 3 kali, maka Fitur “Iraj Ayo Tidur” Tidak bisa dijalankan selama 10 detik (Dengan mengirim pesan ke sistem “Fitur Iraj Ayo Tidur disabled 10 s”)
+        - Jika Fitur  “Iraj Ayo Tidur” dijalankan sebanyak 3 kali, maka Fitur “Agmal Ayo Bangun” Tidak bisa dijalankan selama 10 detik (Dengan mengirim pesan ke sistem “Agmal Ayo Bangun disabled 10 s”)
     - Program akan berhenti jika Salah Satu :
+        - WakeUp_Status Agmal >= 100 (Tampilkan Pesan “Agmal Terbangun,mereka bangun pagi dan berolahraga”)
+        - Spirit_Status Iraj <= 0 (Tampilkan Pesan “Iraj ikut tidur, dan bangun kesiangan bersama Agmal”)
     - Syarat Menggunakan Lebih dari 1 Thread
 
 ### Langkah-Langkah
 
 1. Buat tiga thread, yaitu status, bangun, tidur.
 2. Thread status untuk menjalankan fitur All Status yang berisi status dari variabel WakeUp_Status dan Spirit_Status.
-3. Thread bangun untuk menjalankan fitur Agmal Ayo bangun.
-4. Thread tidur untuk menjalankan fitur Iraj Ayo Tidur.
+3. Thread bangun untuk menjalankan fitur Agmal Ayo bangun, akan disleep jika Iraj Ayo Tidur dijalankan sebanyak 3 kali.
+4. Thread tidur untuk menjalankan fitur Iraj Ayo Tidur, akan disleep jika Agmal Ayo Bangun dijalankan sebanyak 3 kali.
 5. Membuat input untuk menjalankan salah satu fitur.
 
 ### Implementasi
+
+
 
 ## SOAL 4
 
